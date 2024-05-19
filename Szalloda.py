@@ -77,11 +77,13 @@ class Szalloda:
         return None, "A megadott szobaszám nem található."
 
     def Szobaszam_lemondas(self, Szobaszam, DatumK):
+        #szobaszam értékét stringgé alakítjuk biztonság kedvéért
+        Szobaszam= str(Szobaszam)
         for Szoba, foglalas in enumerate(self.foglalasok):
             if foglalas.Szobaszam == Szobaszam and foglalas.DatumK == DatumK:
                 del self.foglalasok[Szoba]
                 return True, "Foglalás lemondva."
-            return False, "Nincs ilyen foglalás."
+        return False, "Nincs ilyen foglalás."
 
     def Foglalas_listazas(self):
         if not self.foglalasok:
